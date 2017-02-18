@@ -28,6 +28,18 @@ import random
 import shutil
 import time
 
+# get terminal size
+width, height = shutil.get_terminal_size((80, 20))
+
+# initialized colors
+colorama.init()
+colors = [colorama.Back.BLACK + " ",
+          colorama.Back.WHITE + " ",
+          colorama.Back.GREEN + " "]
+
+# change the number to change the speed
+sleepTime = 1/30
+
 # this function prints the colors out to the terminal
 def printTape(tape):
     string = "\n"
@@ -72,22 +84,10 @@ def doCycle(tape):
 
     return newTape
 
-# get terminal size
-width, height = shutil.get_terminal_size((80, 20))
-
-# magic numbers to make colors happen
-colorama.init()
-colors = [colorama.Back.BLACK + " ",
-          colorama.Back.WHITE + " ",
-          colorama.Back.GREEN + " "]
-
 # initialize the tape
 tape = []
 for i in range(width):
     tape.append(random.randint(0,2))
-
-# change the number to change the speed
-sleepTime = 1/30
 
 # start printing the automata
 while True:
