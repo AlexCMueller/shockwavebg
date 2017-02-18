@@ -23,8 +23,9 @@
 # 
 # For more information, please refer to <http://unlicense.org/>
 
-import subprocess
+import colorama
 import random
+import shutil
 import time
 
 # this function prints the colors out to the terminal
@@ -72,13 +73,13 @@ def doCycle(tape):
     return newTape
 
 # get terminal size
-heightString, widthString = subprocess.check_output(["stty", "size"]).split()
-
-# no need to conver the height
-width = int(widthString)
+width, height = shutil.get_terminal_size((80, 20))
 
 # magic numbers to make colors happen
-colors = ["\x1b[41m ", "\x1b[44m ", "\x1b[42m "]
+colorama.init()
+colors = [colorama.Back.BLACK + " ",
+          colorama.Back.WHITE + " ",
+          colorama.Back.GREEN + " "]
 
 # initialize the tape
 tape = []
